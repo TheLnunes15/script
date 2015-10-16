@@ -1,0 +1,100 @@
+configura(){
+	echo "Configurando Arquivos:"
+
+	echo "LDAP.conf"
+	mv /etc/openldap/ldap.conf /etc/openldap/ldap.conf.old
+	mv files/ldap.conf /etc/openldap/ldap.conf
+
+	echo "nsswitch.conf"
+	mv /etc/nsswitch.conf  /etc/nsswitch.conf.old
+	mv files/nsswitch.conf /etc/nsswitch.conf
+
+
+	echo "nslcd.conf"
+	mv /etc/nslcd.conf /etc/nslcd.conf.old
+	mv files/nslcd.conf /etc/nslcd.conf
+
+	echo "system-auth"
+	mv /etc/pam.d/system-auth /etc/pam.d/system-auth.old
+	mv files/system-auth /etc/pam.d/system-auth
+
+	echo "su | su-l"
+	mv /etc/pam.d/su /etc/pam.d/su.old
+	mv files/su /etc/pam.d/su
+
+	mv /etc/pam.d/su-l /etc/pam.d/su-l.old
+	mv files/su-l /etc/pam.d/su-l
+
+	echo "passwd"
+	mv /etc/pam.d/passwd /etc/pam.d/passwd.old
+	mv files/passwd /etc/pam.d/passwd
+
+	echo "system-login"
+	mv /etc/pam.d/system-login /etc/pam.d/system-login.old
+	mv files/system-login /etc/pam.d/system-login
+
+	echo "sudo"
+	mv /etc/pam.d/sudo /etc/pam.d/sudo.old
+	mv files/sudo /etc/pam.d/sudo
+
+	echo "sudoers"
+	mv /etc/sudoers /etc/sudoers.old
+	mv files/sudoers /etc/sudoers
+
+	echo "Reatualizando chaves"
+	pacman-key --init
+	pacman-key --populate archlinux
+
+	echo "Iniciando e automatizando inicialização do nslcd"
+	systemctl enable nslcd
+	systemctl start nslcd
+
+	echo "** Configuração finalizada"
+
+}
+
+desconfigura(){
+
+	mv /etc/openldap/ldap.conf.old /etc/openldap/ldap.conf
+	mv /etc/nsswitch.conf.old /etc/nsswitch.conf
+	mv /etc/nslcd.conf.old /etc/nslcd.conf
+	
+	mv /etc/pam.d/system-auth.old /etc/pam.d/system-auth
+	mv /etc/pam.d/su.old /etc/pam.d/su
+	mv /etc/pam.d/su-l.old /etc/pam.d/su-l
+	mv /etc/pam.d/passwd.old /etc/pam.d/passwd
+	mv /etc/pam.d/system-login.old /etc/pam.d/system-login
+	mv /etc/pam.d/sudo.old /etc/pam.d/sudo
+	mv /etc/sudoers.old /etc/sudoers
+}
+
+pre_install(){
+
+	pacman-key --init
+	pacman-key --populate archlinux
+
+}
+
+post_install() {
+
+	configura 
+}
+
+pre_upgrade() {
+
+	pacman-key --init
+	pacman-key --populate archlinux
+
+}
+
+post_upgrade() {
+
+	configura
+
+}
+
+pre_remove() {
+
+	desconfigura
+
+}

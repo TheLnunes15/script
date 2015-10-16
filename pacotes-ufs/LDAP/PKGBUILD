@@ -1,0 +1,20 @@
+# Contribuitor <UNIVERSIDADE FEDERAL DE SERGIPE - UFS ; PRODAP - PROGRAMA DE DESENVOLVIMENTO E APRENDIZAGEM PROFISSIONAL; DCOMP - DEPARTAMENTO DE COMPUTAÇAO>
+
+pkgname=ldap-client-config
+pkgver=1.1
+pkgrel=4
+pkgdesc=" Package that installs and configure the LDAP in UFS-DCOMP computers "
+arch=( "i686" "x86_64" )
+url=" http://computacao.ufs.br "
+depends=( "openldap" "sudo" "nss-pam-ldapd")
+license=( "MIT" )
+source=()
+md5sums=()
+install=.INSTALL
+
+package(){
+	dir=$(pwd)
+	cd ..
+	cp -R files/ $pkgdir
+
+}

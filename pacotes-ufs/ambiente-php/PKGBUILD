@@ -1,0 +1,27 @@
+pkgname=ambiente-php
+pkgver=3.3
+pkgrel=2
+
+pkgdesc="Configuration Package for PHP, Apache and MyAdmin, to Universidade Federal de Sergipe - DCOMP project"
+arch=("x86_64" "i686") 
+url="http://computacao.ufs.br/"
+depends=( "php" "apache" "php-apache" "php-ssh" "phpmyadmin" )
+license=("GPL")
+install=.INSTALL
+source=()
+md5sums=()
+
+build(){
+    cd $startdir
+}   
+
+package(){
+
+    cd $startdir
+
+    cp config.inc.php $pkgdir
+    cp httpd.conf $pkgdir
+    cp php.ini $pkgdir
+    cp phpmyadmin.conf $pkgdir
+    
+}

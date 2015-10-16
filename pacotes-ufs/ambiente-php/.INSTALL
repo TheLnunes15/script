@@ -1,0 +1,52 @@
+configurar(){
+
+echo "[1/5] Criando arquivo de Configuracao do PHP..."
+sudo cp /etc/php/php.ini /etc/php/php.ini.old
+sudo mv php.ini /etc/php/php.ini
+echo "Feito."
+
+echo "[2/5] Criando arquivo de configuracao do Apache..."
+sudo cp /etc/httpd/conf/extra/phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf.old
+sudo mv phpmyadmin.conf /etc/httpd/conf/extra/phpmyadmin.conf
+echo "Feito."
+
+echo "[3/5] Criando Arquivo do de Configuracao do PHPMyAdmin..."
+sudo cp /etc/webapps/phpmyadmin/config.inc.php /etc/webapps/phpmyadmin/config.inc.php.old
+sudo mv config.inc.php /etc/webapps/phpmyadmin/config.inc.php
+echo "Feito."
+
+echo "[4/5] Configurando HTTPD..."
+sudo cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.old
+sudo mv httpd.conf /etc/httpd/conf/httpd.conf
+echo "Feito."
+
+echo "[5/5] Iniciando HTTPD e habilitando auto-inicializacao..."
+sudo systemctl start httpd
+sudo systemctl enable httpd
+echo "Feito."
+
+echo "Configuracao Finalizada!"
+}
+
+padrao(){
+
+	sudo mv /etc/php/php.ini.old /etc/php/php.ini
+	sudo mv /etc/httpd/conf/extra/phpmyadmin.conf.old /etc/httpd/conf/extra/phpmyadmin.conf
+	sudo mv /etc/webapps/phpmyadmin/config.inc.php.old /etc/webapps/phpmyadmin/config.inc.php
+	sudo mv /etc/httpd/conf/httpd.conf.old /etc/httpd/conf/httpd.conf
+}
+
+post_install(){
+
+	configurar
+}
+
+post_upgrade(){
+
+	configurar
+}
+
+post_remove(){
+
+	padrao
+}
