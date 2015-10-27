@@ -2,15 +2,15 @@
 
 echo "SCRIPT INSTALACAO DE PACOTES-UFS"
 
-echo "Instalando o XORG"
+echo "Instalando o XORG:"
 pacman -S xorg-server xorg-xinit xorg-server-utils xorg-twm xorg-xclock xterm --needed --noconfirm
 echo "Feito."
 
-echo "Instalando o driver de video INTEL"
+echo "Instalando o driver de video INTEL:"
 pacman -S xf86-video-intel --needed --noconfirm
 echo "Feito."
 
-echo "Instalando a interface grafica XFCE"
+echo "Instalando a interface grafica XFCE:"
 pacman -S xfce4 xfce4-goodies --needed --noconfirm
 echo "Feito."
 
@@ -43,49 +43,56 @@ driftfile /var/lib/ntp/ntp.drift" > /etc/ntp.conf
 systemctl start ntpd
 systemctl enable ntpd
 
-echo "Servidor de data e hora configurado para BR"
-
+echo "Servidor de data e hora configurado para BR:"
 # Copiando configurações de GUI para todos os users
 cp /root/.config /etc/skel -R
+echo "Feito."
 
-echo "Instalando o LDAP"
+echo "Instalando o LDAP:"
 cd LDAP/
 sh configura_clientescravo.sh
 pacman -U ldap-client-config-*.tar.xz --needed --noconfirm
 cd ..
 echo "Feito."
 
-echo "Instalando o PHP e o PHP-SSH"
+echo "Instalando o PHP e o PHP-SSH:"
 cd php-ssh/
 pacman -U php-ssh-*.tar.xz --needed --noconfirm
 cd ..
 echo "Feito."
 
-echo "Instalando o restante do ambiente PHP"
+echo "Instalando o restante do ambiente PHP:"
 cd ambiente-php/
 sh ambiente-php-*.tar.xz --needed --noconfirm
 cd ..
 echo "Ambiente PHP instalado e configurado."
 
-echo "Instalando o Sublime-text"
+echo "Instalando o Sublime-text:"
 cd sublime/
 pacman -U *.tar.xz --needed --noconfirm
 cd ..
 echo "Sublime-text instalado."
 
-echo "Instalando os programas principais"
+echo "Instalando os programas principais:"
 cd principais/
 sh principal.ssp.sh
 cd ..
 echo "Feito."
 
-echo "Instalando o Display Manager"
+echo "Instalando o Wireshark:"
+pacman -S wireshark-cli --needed --noconfirm
+cd wireshark/
+sh conf_wireshark.sh
+cd ..
+echo "Feito."
+
+echo "Instalando o Display Manager:"
 cd Display_Manager/
 sh temalogin.sh
 cd ..
 echo "Feito."
 
-echo "Criando um usuario PRODAP"
+echo "Criando um usuario PRODAP:"
 useradd prodap
 mkdir /home/prodap
 echo "Para configurar a senha do usuario PRODAP, digite: '123456'. Em seguida, confirme-a:"
@@ -94,7 +101,7 @@ chown prodap /home/prodap
 chgrp prodap /home/prodap
 echo "Feito."
 
-echo "Criando um usuario para alunos do OBI"
+echo "Criando um usuario para alunos do OBI:"
 useradd aluno-obi
 mkdir /home/aluno-obi
 echo "Para configurar a senha do usuario OBI, digite: 'obiufs'. Em seguida, confirme-a:"
@@ -103,7 +110,7 @@ chown aluno-obi /home/aluno-obi
 chgrp aluno-obi /home/aluno-obi
 echo "Feito."
 
-echo "Criando um usuario para alunos e visitantes do DCOMP"
+echo "Criando um usuario para alunos e visitantes do DCOMP:"
 useradd aluno
 mkdir /home/aluno
 echo "Para configurar a senha do usuario OBI, digite: 'aluno'. Em seguida, confirme-a:"
