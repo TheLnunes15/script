@@ -76,20 +76,9 @@ echo "Sublime-text instalado."
 echo "Instalando os programas principais:"
 cd principais/
 sh principal.ssp.sh
-cd ..
-echo "Feito."
-
-echo "Instalando o Wireshark:"
-pacman -S wireshark-cli --needed --noconfirm
-cd wireshark/
-sh conf_wireshark.sh
-cd ..
-echo "Feito."
 
 echo "Instalando o Display Manager:"
-cd Display_Manager/
 sh temalogin.sh
-cd ..
 echo "Feito."
 
 echo "Criando um usuario PRODAP:"
@@ -117,6 +106,12 @@ echo "Para configurar a senha do usuario OBI, digite: 'aluno'. Em seguida, confi
 passwd aluno
 chown aluno /home/aluno
 chgrp aluno /home/aluno
+echo "Feito."
+
+echo "Instalando o Wireshark:"
+pacman -S wireshark-cli wireshark-qt wireshark-gtk --needed --noconfirm
+sh conf_wireshark.sh
+cd ..
 echo "Feito."
 
 echo "Finalizado!"

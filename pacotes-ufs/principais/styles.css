@@ -1,0 +1,53 @@
+
+#panel_menubar
+{
+    -GtkWidget-window-dragging: false;
+}
+
+#main_content, #main_border,
+#messagebox_content, #messagebox_border
+{	border: none;
+    border-radius: 12px;
+}
+
+#main_border
+{
+
+
+color: #4d4d4d;
+
+
+}
+
+
+#messagebox_border
+{
+    border: none;
+	
+
+}
+
+#main_content
+{
+    background: none;
+	
+
+}
+
+#panel_content{
+background:#4d4d4d;
+color:#001105;
+
+
+}
+
+
+
+
+#messagebox_content{
+    background: none;
+
+    color:#c53c00;
+}
+
+
