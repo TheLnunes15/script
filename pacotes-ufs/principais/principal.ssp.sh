@@ -2,7 +2,8 @@
 
 echo "Pacotes necessarios"
 pacman -S ttf-bitstream-vera ttf-dejavu ttf-freefont ttf-linux-libertine ttf-oxygen ttf-droid ttf-liberation ttf-ubuntu-font-family --needed --noconfirm
-pacman -S alsa-utils alsa-tools flashplugin file-roller cdrkit lrzip p7zip python unace unrar jdk8-openjdk libreoffice openssh bleachbit onboard evince gedit cvsps codeblocks eclipse gimp firefox chromium vlc gvfs dosfstools mariadb iftop inkscape iperf iperf3 postgresql mysql-workbench tcl tk --needed --noconfirm
+pacman -S alsa-utils alsa-tools flashplugin file-roller cdrkit lrzip p7zip python unace unrar jdk8-openjdk libreoffice openssh bleachbit onboard evince gedit cvsps codeblocks eclipse netbeans gimp firefox chromium vlc gvfs dosfstools mariadb iftop inkscape iperf iperf3 postgresql mysql-workbench run-parts galculator mono texmaker xscreensaver tcl tk --needed --noconfirm
+pacman -U imagemagick-6.9.2.4-1-x86_64.pkg.tar.xz --needed --noconfirm
 echo "Feito."
 
 echo "Pacotes OBI"
