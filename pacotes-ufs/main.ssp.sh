@@ -84,7 +84,7 @@ echo "Feito."
 echo "Criando um usuario PRODAP:"
 useradd prodap
 mkdir /home/prodap
-echo "Para configurar a senha do usuario PRODAP, digite: '123456'. Em seguida, confirme-a:"
+echo "Configure a senha de usuario PRODAP. Em seguida, confirme-a:"
 passwd prodap
 chown prodap /home/prodap
 chgrp prodap /home/prodap
@@ -93,7 +93,7 @@ echo "Feito."
 echo "Criando um usuario para alunos do OBI:"
 useradd aluno-obi
 mkdir /home/aluno-obi
-echo "Para configurar a senha do usuario OBI, digite: 'obiufs'. Em seguida, confirme-a:"
+echo "Configure a senha de usuario OBI. Em seguida, confirme-a:"
 passwd aluno-obi
 chown aluno-obi /home/aluno-obi
 chgrp aluno-obi /home/aluno-obi
@@ -102,7 +102,7 @@ echo "Feito."
 echo "Criando um usuario para alunos e visitantes do DCOMP:"
 useradd aluno
 mkdir /home/aluno
-echo "Para configurar a senha do usuario OBI, digite: 'aluno'. Em seguida, confirme-a:"
+echo "Configure a senha de usuario ALUNO. Em seguida, confirme-a:"
 passwd aluno
 chown aluno /home/aluno
 chgrp aluno /home/aluno
